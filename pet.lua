@@ -3,7 +3,7 @@ version 42
 __lua__
 
 function _init()
-    hero={hp=10,mp=10,zzz=10}--stats
+    hero={hp=10,mp=10,zzz=10,sprite=36}--stats
     bars={hp=102,mp=102,zzz=102}--default bar locations
     btncd=60
     btnp={hp=false,mp=false,zzz=false,cd=30}
@@ -16,14 +16,21 @@ function _update()
     calcbars()--calculates bar fill
     btnpress()
     event()
+    herosprite()
     if hero.hp>10 then
         hero.hp=10
+    elseif hero.hp<0 then
+        hero.hp=0
     end
     if hero.mp>10 then
         hero.mp=10
+    elseif hero.mp<0 then
+        hero.mp=0
     end
     if hero.zzz>10 then
         hero.zzz=10
+    elseif hero.zzz<0 then
+        hero.zzz=0
     end
     --debug below
     --[[posfinder()]]
@@ -34,6 +41,7 @@ function _draw()
     cls()--clear screen
     map()--load map
     drawbars()--fills the bars
+    spr(hero.sprite,56,32,2,2)
     --ui buttons
     if btnp.hp==true then
         spr(20,51,91)
@@ -69,6 +77,14 @@ end
 
 --new functions below
 
+function herosprite()
+    if hero.hp<4 then
+        hero.sprite=38
+    else
+        hero.sprite=36
+    end
+end
+
 function event()
     if eventcd>0 then
         eventcd-=1
@@ -81,11 +97,8 @@ function event()
         end
     hero.zzz-=1
     eventcd=120
+    sfx(3)
     end
-end
-
-function eventcd()
-
 end
 
 function btnpress()
