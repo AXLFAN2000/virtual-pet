@@ -125,86 +125,20 @@ function btnpress()
 end
 
 function calcbars()
-    --hp bar
-    if hero.hp>9 then
-        bars.hp=102
-    elseif hero.hp>8 then
-        bars.hp=94
-    elseif hero.hp>7 then
-        bars.hp=86
-    elseif hero.hp>6 then
-        bars.hp=78
-    elseif hero.hp>5 then
-        bars.hp=70
-    elseif hero.hp>4 then
-        bars.hp=62
-    elseif hero.hp>3 then
-        bars.hp=54
-    elseif hero.hp>2 then
-        bars.hp=38
-    elseif hero.hp>1 then
-        bars.hp=30
-    elseif hero.hp==1 then
-        bars.hp=26
-    elseif hero.hp==0 then
-        bars.hp=25
-    end
-    --mp bar
-    if hero.mp>9 then
-        bars.mp=102
-    elseif hero.mp>8 then
-        bars.mp=94
-    elseif hero.mp>7 then
-        bars.mp=86
-    elseif hero.mp>6 then
-        bars.mp=78
-    elseif hero.mp>5 then
-        bars.mp=70
-    elseif hero.mp>4 then
-        bars.mp=62
-    elseif hero.mp>3 then
-        bars.mp=54
-    elseif hero.mp>2 then
-        bars.mp=38
-    elseif hero.mp>1 then
-        bars.mp=30
-    elseif hero.mp==1 then
-        bars.mp=26
-    elseif hero.mp==0 then
-        bars.mp=25
-    end
-    --zzz bar
-    if hero.zzz>9 then
-        bars.zzz=102
-    elseif hero.zzz>8 then
-        bars.zzz=94
-    elseif hero.zzz>7 then
-        bars.zzz=86
-    elseif hero.zzz>6 then
-        bars.zzz=78
-    elseif hero.zzz>5 then
-        bars.zzz=70
-    elseif hero.zzz>4 then
-        bars.zzz=62
-    elseif hero.zzz>3 then
-        bars.zzz=54
-    elseif hero.zzz>2 then
-        bars.zzz=38
-    elseif hero.zzz>1 then
-        bars.zzz=30
-    elseif hero.zzz==1 then
-        bars.zzz=26
-    elseif hero.zzz==0 then
-        bars.zzz=25
-    end
+    bars.hp=75*hero.hp/10
+    bars.mp=75*hero.mp/10  
+    bars.zzz=75*hero.zzz/10
 end
     
 function drawbars()
-    rectfill(25,57,bars.hp,62,8)--hp bar
+    rectfill(26,58,26+bars.hp,61,8)--hp bar
+    print(hero.hp,105,58,0)
     print(hero.hp,104,57,8)
-    rectfill(25,65,bars.mp,70,9)--mp bar
+    rectfill(26,66,26+bars.mp,69,9)--mp bar
+    print(hero.mp,105,66,0)
     print(hero.mp,104,65,9)
-    rectfill(25,73,bars.zzz,78,10)--zzz bar
+    rectfill(26,74,26+bars.zzz,77,10)--zzz bar
+    print(hero.zzz,105,74,0)
     print(hero.zzz,104,73,10)
 end
 
